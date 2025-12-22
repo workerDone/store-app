@@ -1,6 +1,7 @@
 import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot, Routes } from '@angular/router';
 import { delay, first, of, Subject, switchMap } from 'rxjs';
 import { Main } from './main/main';
+import { SimpleSignal } from './signal/simple-signal/simple-signal';
 
 export const userResolver: ResolveFn<string> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
   const user: Subject<string> = new Subject();
@@ -25,7 +26,13 @@ export const routes: Routes = [
   },
   {
     path: '',
-    component: Main
+    component: Main,
+    children: [
+      {
+        path: 'signal',
+        component: SimpleSignal
+      }
+    ]
   },
   {
     path: '**',
