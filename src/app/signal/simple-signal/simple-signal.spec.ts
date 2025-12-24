@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SimpleSignal } from './simple-signal';
 import { provideRouter } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { signal } from '@angular/core';
 
 describe('SimpleSignal', () => {
   let component: SimpleSignal;
@@ -81,5 +82,29 @@ describe('SimpleSignal', () => {
 
     expect(effectSpy).toHaveBeenCalledWith('The count is: 1');
     expect(effectSpy).toHaveBeenCalledTimes(2);
+  });
+
+  it('should selectedOption be first element from shippingOptions', () => {
+    expect(component.selectedOption()).toEqual(component.shippingOptions()[0]);
+  });
+
+  it('should selectedOption equal selected index from shippingOptions', () => {
+    const selectedOption = component.shippingOptions()[1];
+    component.changeShipping(selectedOption.id)
+    expect(component.selectedOption()).toEqual(selectedOption);
+  });
+
+  it('should selectedOption be the same if shippingOptions changed, but index exist', () => {
+    const selectedOptionIndex = 1;
+    component.changeShipping(component.shippingOptions()[selectedOptionIndex].id);
+    component.changeShippingOptions();
+    expect(component.selectedOption()).toEqual(component.shippingOptions()[selectedOptionIndex]);
+  });
+
+  it('should selectedOption be first element if shippingOptions changed index not exist', () => {
+    const selectedOptionIndex = 3;
+    component.changeShipping(component.shippingOptions()[selectedOptionIndex].id);
+    component.changeShippingOptions();
+    expect(component.selectedOption()).toEqual(component.shippingOptions()[0]);
   });
 });
