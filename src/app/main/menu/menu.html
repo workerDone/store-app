@@ -1,18 +1,18 @@
 <button matButton [matMenuTriggerFor]="signalMenu">Signal</button>
 <mat-menu #signalMenu="matMenu">
   <button routerLink="signal" mat-menu-item>Simple</button>
+  <button routerLink="signal-store" mat-menu-item>Store</button>
+</mat-menu>
+
+<button matButton [matMenuTriggerFor]="observableMenu">Observable</button>
+<mat-menu #observableMenu="matMenu">
+  <button mat-menu-item routerLink="observable">Simple</button>
   <button mat-menu-item>Item 2</button>
 </mat-menu>
 
-<button matButton [matMenuTriggerFor]="belowMenu">Below</button>
-<mat-menu #belowMenu="matMenu">
-  <button mat-menu-item>Item 1</button>
-  <button mat-menu-item>Item 2</button>
-</mat-menu>
-
-<button matButton [matMenuTriggerFor]="beforeMenu">Before</button>
-<mat-menu #beforeMenu="matMenu">
-  <button mat-menu-item>Item 1</button>
+<button matButton [matMenuTriggerFor]="testMenu">Test harness</button>
+<mat-menu #testMenu="matMenu">
+  <button mat-menu-item routerLink="/test/harness" >Temperature Converter</button>
   <button mat-menu-item>Item 2</button>
 </mat-menu>
 

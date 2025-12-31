@@ -1,0 +1,24 @@
+<mat-card class="card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Concated</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p >{{concated|async|json}}</p>
+  </mat-card-content>
+  <mat-card-footer>
+    <button (click)="addInitialValueToObservable()" matButton="tonal">addInitialValueToObservable</button>
+  </mat-card-footer>
+</mat-card>
+<mat-card class="card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>My name is {{name|async}}</mat-card-title>
+  </mat-card-header>
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput [formControl]="nameFormControl"  placeholder="Enter the name">
+  </mat-form-field>
+  <mat-card-footer>
+    <button (click)="setName(nameFormControl.value!)" matButton="tonal">set name</button>
+    <button (click)="clearName()" matButton="tonal">clear name</button>
+  </mat-card-footer>
+</mat-card>

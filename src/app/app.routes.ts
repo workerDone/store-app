@@ -2,6 +2,9 @@ import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot, Routes } from '
 import { delay, first, of, Subject, switchMap } from 'rxjs';
 import { Main } from './main/main';
 import { SimpleSignal } from './signal/simple-signal/simple-signal';
+import { titleResolver } from './signal/simple-signal/title-resolver';
+import { SignalStore } from './signal/signal-store/signal-store';
+import { SimpleObservable } from './rxjs/simple-observable/simple-observable';
 
 export const userResolver: ResolveFn<string> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
   const user: Subject<string> = new Subject();
@@ -30,7 +33,18 @@ export const routes: Routes = [
     children: [
       {
         path: 'signal',
-        component: SimpleSignal
+        component: SimpleSignal,
+        title: titleResolver
+      },
+      {
+        path: 'signal-store',
+        component: SignalStore,
+        title: 'Signal Store',
+      },
+      {
+        path: 'observable',
+        component: SimpleObservable,
+        title: 'Simple Observable',
       }
     ]
   },

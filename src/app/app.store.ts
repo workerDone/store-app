@@ -11,7 +11,7 @@ const initialState: AppState = {
 export const AppStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
-  withMethods(store => ({ // Optional: adds methods
+  withMethods(store => ({
     login: () => patchState(store, { hasLogin: true }),
     logout: () => patchState(store, { hasLogin: false }),
   }))
