@@ -5,6 +5,7 @@ import { SimpleSignal } from './signal/simple-signal/simple-signal';
 import { titleResolver } from './signal/simple-signal/title-resolver';
 import { SignalStore } from './signal/signal-store/signal-store';
 import { SimpleObservable } from './rxjs/simple-observable/simple-observable';
+import { TemperatureConverter } from './temperature-converter/temperature-converter';
 
 export const userResolver: ResolveFn<string> = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
   const user: Subject<string> = new Subject();
@@ -45,6 +46,11 @@ export const routes: Routes = [
         path: 'observable',
         component: SimpleObservable,
         title: 'Simple Observable',
+      },
+      {
+        path: 'test-task/temperature-converter',
+        component: TemperatureConverter,
+        title: 'Temperature Converter',
       }
     ]
   },
